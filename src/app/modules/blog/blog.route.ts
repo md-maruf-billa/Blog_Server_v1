@@ -9,7 +9,13 @@ const blogRouter = Router();
 blogRouter.post("/", checkSchemaValidation(blogValidations.createBlogValidationSchema), blogController.createABlog)
 
 // get all blogs
-blogRouter.get("/", blogController.getAllBlogs)
+blogRouter.get("/", blogController.getAllBlogs);
+
+// update blog
+blogRouter.patch("/:id", checkSchemaValidation(blogValidations.updateBlogValidationSchema), blogController.updateABlog);
+
+// delete a blog
+blogRouter.delete("/:id", blogController.deleteBlog);
 
 
 // export 

@@ -23,7 +23,30 @@ const getAllBlogs = catchAsync(async (req, res) => {
     })
 })
 
+// update blog
+
+const updateABlog = catchAsync(async (req, res) => {
+    const result = await blogSerices.updateBlogIntoDB(req.params.id, req.body);
+    sendResponse(res, {
+        message: "Blog updated successfully",
+        data: result,
+        statusCode: status.OK
+    })
+})
+
+//delete blog
+const deleteBlog = catchAsync(async (req, res) => {
+    await blogSerices.deleteBlogFromDB(req.params.id);
+    sendResponse(res, {
+        message: "Blog deleted successfully",
+        statusCode: status.OK,
+        data: null
+    })
+})
+
 export const blogController = {
     createABlog,
-    getAllBlogs
+    getAllBlogs,
+    updateABlog,
+    deleteBlog
 }
