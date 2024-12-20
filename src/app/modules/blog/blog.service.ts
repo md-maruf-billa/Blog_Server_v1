@@ -1,3 +1,4 @@
+import QueryBuilder from "../../utils/queryBuilder";
 import { TBlog } from "./blog.interface"
 import { BlogModel } from "./blog.schema"
 
@@ -8,8 +9,9 @@ const createABlogIntoDB = async (payload: TBlog) => {
 }
 
 // get all blogs from db
-const getAllBlogsFromDB = async () => {
-    const result = await BlogModel.find({ isDeleted: { $ne: true } }).populate("author");
+const getAllBlogsFromDB = async (query: Record<string, unknown>) => {
+    const blogQueries = new QueryBuilder(query, BlogModel.find({ isDeleted: { $ne: true } })).search(["title"]).filter().sort();
+    const result = await blogQueries.queryModel.populate("author");
     return result;
 }
 
