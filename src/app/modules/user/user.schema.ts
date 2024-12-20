@@ -32,6 +32,7 @@ const userSchema = new Schema<TUser>({
     }
 }, { versionKey: false, timestamps: true });
 
+
 // secure password using bcrypt before saving
 userSchema.pre("save", async function (next) {
     const hashPassword = bcrypt.hashSync(this.password, 10);

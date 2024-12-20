@@ -6,9 +6,14 @@ const createUserValidation = z.object({
     password: z.string({ required_error: "Password is required" }),
     role: z.enum(["admin", "user"]).default("user"),
 })
+const loginUserValidation = z.object({
+    email: z.string({ required_error: "User email is required" }),
+    password: z.string({ required_error: "Password is required" }),
+})
 
 
 // export validation
 export const userValidations = {
-    createUserValidation
+    createUserValidation,
+    loginUserValidation
 }

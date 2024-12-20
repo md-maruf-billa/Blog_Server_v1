@@ -54,7 +54,7 @@ const globalErrorHandler = (err: any, req: Request, res: Response, next: NextFun
     res.status(statusCode).send({
         success: false,
         message,
-        errorSources: errorSources,
+        error: errorSources,
         stack: Server_Config.ENV_TYPE === 'development' ? err.stack : null
     })
 }

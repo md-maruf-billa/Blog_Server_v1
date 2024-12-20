@@ -9,3 +9,7 @@ export type TUser = {
     updatedAt?: Date,
 }
 
+export type TUserLogin = {
+    email: string,
+    password: string
+}
