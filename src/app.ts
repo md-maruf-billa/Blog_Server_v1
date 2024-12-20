@@ -1,12 +1,15 @@
 import express, { Request, Response } from 'express';
 import sendResponse from './app/utils/sendResponse';
 import cors from "cors";
+import serverRoutes from './app/router/routes';
+import globalErrorHandler from './app/errors/globalErrorHandler';
 const app = express()
 
 // meddleware
 app.use(express.json());
 app.use(express.raw());
 app.use(cors())
+app.use("/api", serverRoutes)
 
 
 
@@ -18,4 +21,6 @@ app.get('/', (req: Request, res: Response) => {
     })
 })
 
+// handel error globally
+app.use(globalErrorHandler)
 export default app

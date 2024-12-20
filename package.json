@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start:dev":"tsnd --respawn ./src/server.ts"
+    "start:dev": "tsnd --respawn ./src/server.ts"
   },
   "author": "Abumahid",
   "license": "ISC",
@@ -17,6 +17,7 @@
     "express": "^4.21.2",
     "mongodb": "^6.12.0",
     "mongoose": "^8.9.2",
-    "typescript": "^5.7.2"
+    "typescript": "^5.7.2",
+    "zod": "^3.24.1"
   }
 }
