@@ -4,6 +4,7 @@ import cors from "cors";
 import serverRoutes from './app/router/routes';
 import globalErrorHandler from './app/errors/globalErrorHandler';
 import  status  from 'http-status';
+import notFound from './app/utils/apiNotFound';
 const app = express()
 
 // meddleware
@@ -25,4 +26,6 @@ app.get('/', (req: Request, res: Response) => {
 
 // handel error globally
 app.use(globalErrorHandler)
+app.use(notFound)
+
 export default app

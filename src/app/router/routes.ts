@@ -1,3 +1,4 @@
+import adminRouter from "../modules/admin/admin.route";
 import authRoute from "../modules/auth/auth.route";
 import blogRouter from "../modules/blog/blog.route";
 import userRoute from "../modules/user/user.route";
@@ -23,6 +24,10 @@ const allRoutes: TServerRoutes[] = [
     {
         path: "/blogs",
         route: blogRouter
+    },
+    {
+        path: "/admin",
+        route: adminRouter
     },
 ]
 

@@ -24,11 +24,8 @@ class QueryBuilder<T> {
 
     // define filltering method
     filter() {
-        const filteringQuery = { ...this.query };
-        const exludeFields = ['search', 'sortBy', 'sortOrder'];
-        exludeFields.map((fld) => delete filteringQuery[fld]);
-        console.log(filteringQuery)
-        this.queryModel = this.queryModel.find({ _id: filteringQuery.filter });
+        const filterQuery = this?.query?.filter && { _id: this?.query?.filter }
+        this.queryModel = this.queryModel.find(filterQuery);
         return this;
     }
 
