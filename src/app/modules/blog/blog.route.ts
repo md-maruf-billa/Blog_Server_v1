@@ -8,6 +8,8 @@ const blogRouter = Router();
 // create a new blog
 blogRouter.post("/", checkSchemaValidation(blogValidations.createBlogValidationSchema), blogController.createABlog)
 
+// get all blogs
+blogRouter.get("/", blogController.getAllBlogs)
 
 
 // export 

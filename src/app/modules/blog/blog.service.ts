@@ -7,7 +7,13 @@ const createABlogIntoDB = async (payload: TBlog) => {
     return result;
 }
 
+// get all blogs from db
+const getAllBlogsFromDB = async () => {
+    const result = await BlogModel.find().populate("author");
+    return result;
+}
 
 export const blogSerices = {
-    createABlogIntoDB
+    createABlogIntoDB,
+    getAllBlogsFromDB
 }
