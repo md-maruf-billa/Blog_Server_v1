@@ -9,6 +9,6 @@ const createUserValidation = z.object({
 
 
 // export validation
-const userValidations = {
+export const userValidations = {
     createUserValidation
 }

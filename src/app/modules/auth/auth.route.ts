@@ -1,10 +1,11 @@
-import {Router} from 'express';
+import { Router } from 'express';
+import { authControllers } from './auth.controller';
+import checkSchemaValidation from '../../utils/checkSchemaValidation';
+import { userValidations } from '../user/user.validation';
 const authRoute = Router();
 
 // create a new user
-// const createUser = async (req, res) => {
-    
-// }
+authRoute.post("/register", checkSchemaValidation(userValidations.createUserValidation), authControllers.registerNewUser);
 
 
 

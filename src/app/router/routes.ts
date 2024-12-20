@@ -1,3 +1,4 @@
+import authRoute from "../modules/auth/auth.route";
 import userRoute from "../modules/user/user.route";
 import { Router } from 'express';
 
@@ -13,6 +14,10 @@ const allRoutes: TServerRoutes[] = [
     {
         path: "/user",
         route: userRoute
+    },
+    {
+        path: "/auth",
+        route: authRoute
     }
 ]
 
