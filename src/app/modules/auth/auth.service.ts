@@ -34,7 +34,6 @@ const loginUserFromDb = async (payload: TUserLogin) => {
     }
 
     // if user is valided then return token
-
     return {
         token: null
     };
