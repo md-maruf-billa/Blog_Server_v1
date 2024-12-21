@@ -2,20 +2,21 @@ import { Router } from 'express';
 import checkSchemaValidation from '../../utils/checkSchemaValidation';
 import { blogValidations } from './blog.validation';
 import { blogController } from './blog.controller';
+import checkUserTokenIsValid from '../../utils/checkUserTokenIsValid';
 
 const blogRouter = Router();
 
 // create a new blog
-blogRouter.post("/", checkSchemaValidation(blogValidations.createBlogValidationSchema), blogController.createABlog)
+blogRouter.post("/", checkUserTokenIsValid("user"), checkSchemaValidation(blogValidations.createBlogValidationSchema), blogController.createABlog)
 
 // get all blogs
 blogRouter.get("/", blogController.getAllBlogs);
 
 // update blog
-blogRouter.patch("/:id", checkSchemaValidation(blogValidations.updateBlogValidationSchema), blogController.updateABlog);
+blogRouter.patch("/:id",checkUserTokenIsValid("user"), checkSchemaValidation(blogValidations.updateBlogValidationSchema), blogController.updateABlog);
 
 // delete a blog
-blogRouter.delete("/:id", blogController.deleteBlog);
+blogRouter.delete("/:id",checkUserTokenIsValid("user","admin"), blogController.deleteBlog);
 
 
 // export 

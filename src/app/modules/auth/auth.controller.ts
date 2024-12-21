@@ -13,6 +13,7 @@ const registerNewUser = catchAsync(async (req, res) => {
 })
 const loginUser = catchAsync(async (req, res) => {
     const result = await authServices.loginUserFromDb(req.body);
+    res.cookie("token", result?.token)
     sendResponse(res, {
         message: "User LoggedIn Successfully",
         statusCode: status.OK,
