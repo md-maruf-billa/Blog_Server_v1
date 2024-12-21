@@ -16,7 +16,7 @@ blogRouter.get("/", blogController.getAllBlogs);
 blogRouter.patch("/:id",checkUserTokenIsValid("user"), checkSchemaValidation(blogValidations.updateBlogValidationSchema), blogController.updateABlog);
 
 // delete a blog
-blogRouter.delete("/:id",checkUserTokenIsValid("user","admin"), blogController.deleteBlog);
+blogRouter.delete("/:id",checkUserTokenIsValid("user"), blogController.deleteBlog);
 
 
 // export 
