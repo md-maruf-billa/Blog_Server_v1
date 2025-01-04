@@ -1,30 +1,39 @@
-import { Schema, model } from 'mongoose';
-import { TBlog } from './blog.interface';
+import { Schema, model } from 'mongoose'
+import { BlogModelStatic, TBlog } from './blog.interface'
 
-const BlogSchema = new Schema<TBlog>({
+export const BlogSchema = new Schema<TBlog>(
+  {
     title: {
-        type: String,
-        required: true
+      type: String,
+      required: true
     },
     content: {
-        type: String,
-        required: true
+      type: String,
+      required: true
     },
     author: {
-        type: Schema.Types.ObjectId,
-        ref: 'user',
-        required: true
+      type: Schema.Types.ObjectId,
+      ref: 'user',
+      required: true
     },
     isPublished: {
-        type: Boolean,
-        default: true
+      type: Boolean,
+      default: true
     },
     isDeleted: {
-        type: Boolean,
-        default: false
+      type: Boolean,
+      default: false
     }
-}, { versionKey: false, timestamps: true });
+  },
+  { versionKey: false, timestamps: true }
+)
 
+
+BlogSchema.statics.isBlogExist = async function (id: string) {
+    const blog = await BlogModel.findById(id);
+    return blog;
+  
+}
 
 // create model for blog schema
-export const BlogModel = model<TBlog>('blog', BlogSchema);
+export const BlogModel = model<TBlog, BlogModelStatic>('blog', BlogSchema)
